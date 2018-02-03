@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.EqualsAndHashCode;
@@ -31,6 +34,10 @@ public class Item extends BaseEntity{
 	
 	@Column(name = "amount")
 	private int amount;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "categoty_id")
+	private Category category;
 
 	public Item(String name, String description, BigDecimal price, int amount) {
 		super();
